@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'app';
+    title = 'app';
+    value = '123456789012345678901234567890123456789012345678901234567890';
+    onClick(event) {
+      console.log(JSON.stringify(event.target.id) + 'clicked');
+    }
 }

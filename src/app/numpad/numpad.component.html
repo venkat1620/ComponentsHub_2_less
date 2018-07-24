@@ -1,0 +1,39 @@
+<div class="customNumpad" (toggleComponent)='toggleKeyBoard($event)'>
+  <span>
+      <ng-content></ng-content>
+  </span>
+  <div class="numpad-container" *ngIf="showCustomKeyboard" id="numpadContainer">
+    <div class="grid-container numpad-wrapper">
+      <div class="grid-container left-btn-group">
+        <numpad-btn (btnClicked)="cancel()">
+          <svg class="btn-cancel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+            <use xlink:href="assets/cancel-btn.svg#image" />
+          </svg>
+        </numpad-btn>
+      </div>
+      <div class="grid-container mid-btn-group">
+        <div class="grid-container mid-left-btn-group">
+          <numpad-btn (btnClicked)="setInputValue(key.value)" *ngFor="let key of keyValues" [disableBtn]="key.disable">
+            <div class="num-btn">{{key.value}}</div>
+          </numpad-btn>
+        </div>
+        <div class="mid-right-btn-group">
+          <numpad-btn (btnClicked)="delete()">
+            <svg class="btn-bsp" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+              <use xlink:href="assets/backspace-btn.svg#image" />
+            </svg>
+          </numpad-btn>
+        </div>
+      </div>
+      <div class="grid-container right-btn-group">
+        <div class="btn-check-wrapper">
+          <numpad-btn  [isNotNumBtn]="isNotNumBtn" (btnClicked)="confirm()">
+            <svg class="btn-check" nonNumbtn xmlns="http://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+              <use xlink:href="assets/checked-btn.svg#image" />
+            </svg>
+          </numpad-btn>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

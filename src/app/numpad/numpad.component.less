@@ -1,0 +1,104 @@
+.customNumpad {
+    display: inline-block;
+    .numpad-container {
+        background-color: #000;
+        border-radius: 10px 10px 0 0;
+        padding: 2px 2px 0 2px;
+        width: 95%;
+        position: fixed;
+        bottom: 0;
+        left: 2.25vw;
+        z-index: 9999;
+        * {
+            text-align: center
+        }
+        .grid-container {
+            display: grid;
+            &.numpad-wrapper {
+                border: 1px solid #fff;
+                border-radius: 10px 10px 0 0;
+                border-bottom: 0;
+                grid: ~"150px / 15% 70% 15%";
+            }
+            &.left-btn-group {
+                align-content: start;
+                grid: auto / 50%;
+                padding: 10px;
+                .btn-cancel:extend(.customNumpad .btn-cancel-bsp) {
+                    max-width: 24px;
+                    height: 32px;
+                }
+            }
+            &.mid-btn-group {
+                grid: ~"auto / 75% 25%";
+                padding: 10px;
+                .mid-left-btn-group {
+                    grid: ~"auto / auto auto auto";
+                    .num-btn {
+                        color: #fff;
+                        font-size: calc(~"16px + (24 - 16) * ((100vw - 300px) / (1600 - 300))");
+                    }
+                }
+                .mid-right-btn-group {
+                    text-align: left;
+                    .btn-bsp:extend(.customNumpad .btn-cancel-bsp) {
+                        max-width: 32px;
+                        height: 32px;
+                      }
+                } 
+            }
+            &.right-btn-group {
+                grid: ~"50% / auto";
+                align-content: end;
+                justify-content: right;
+                padding: 10px;
+                .btn-check-wrapper {
+                    width: calc(~"30px + (80 - 30) * ((100vw - 300px) / (1450 - 300))");
+                    height: calc(~"30px + (80 - 30) * ((100vw - 300px) / (1450 - 300))");
+                    text-align: center;
+                    .btn-check {
+                        width: 100%;
+                        height: 100%;
+                    }                    
+                }
+            }
+        } 
+    }
+    .btn-cancel-bsp {
+        width: 100%;
+        min-width: 16px;
+        fill: #fff;
+    }  
+}
+
+
+
+
+
+
+
+.text-cursor {
+    border-left: 1px solid black;
+    position: absolute;
+    -webkit-animation: 1s blink step-end infinite;
+    animation: 1s blink cubic-bezier(1, 0, 0, 1) infinite;
+    visibility: hidden;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1.0;
+    }
+    to {
+        opacity: 0.0;
+    }
+}
+
+@-webkit-keyframes blink {
+    from {
+        opacity: 1.0;
+    }
+    to {
+        opacity: 0.0;
+    }
+}

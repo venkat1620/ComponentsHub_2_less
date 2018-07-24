@@ -1,0 +1,6 @@
+<button class="n-btn num-btn" (click)="clicked()" *ngIf="!isNotNumBtn" [disabled]="disableBtn" >
+  <ng-content></ng-content>
+</button>
+<button class="n-btn not-num-btn" (click)="clicked()" *ngIf="isNotNumBtn" [disabled]="disableBtn">
+    <ng-content select="[nonNumbtn]"></ng-content>
+</button>
