@@ -1,0 +1,14 @@
+<div class='row'>
+    <button class='btn' [disabled]="isDisabled">
+        <i class='icon icon-cancel'></i>
+        <span>cancel cancel cancel cancel cancel cancel cancel</span>
+    </button>
+    <a class='btn' [ngClass]="{'btn-disabled':isDisabled}">
+        <i class='icon icon-cancel'></i>
+        <span>cancel cancel cancel cancel cancel cancel cancel</span>
+    </a>
+    <input type="button" class='btn' [disabled]="isDisabled" value="cancel cancel cancel cancel cancel cancel cancel">
+</div>
+<div class='row'>
+    <button class='btn' (click)="toggle()">Toggle buttons</button>
+</div>

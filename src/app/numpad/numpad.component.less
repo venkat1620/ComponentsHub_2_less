@@ -24,7 +24,8 @@
                 align-content: start;
                 grid: auto / 50%;
                 padding: 10px;
-                .btn-cancel:extend(.customNumpad .btn-cancel-bsp) {
+                .btn-cancel {
+                    @btn-cancel-bsp();
                     max-width: 24px;
                     height: 32px;
                 }
@@ -41,7 +42,8 @@
                 }
                 .mid-right-btn-group {
                     text-align: left;
-                    .btn-bsp:extend(.customNumpad .btn-cancel-bsp) {
+                    .btn-bsp {
+                        @btn-cancel-bsp();
                         max-width: 32px;
                         height: 32px;
                       }
@@ -62,13 +64,13 @@
                     }                    
                 }
             }
+            @btn-cancel-bsp: {
+                width: 100%;
+                min-width: 16px;
+                fill: #fff;
+            }  
         } 
     }
-    .btn-cancel-bsp {
-        width: 100%;
-        min-width: 16px;
-        fill: #fff;
-    }  
 }
 
 

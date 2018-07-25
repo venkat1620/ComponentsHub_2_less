@@ -11,4 +11,6 @@ export class AppComponent {
     onClick(event) {
       console.log(JSON.stringify(event.target.id) + 'clicked');
     }
+    constructor() {
+    }
 }

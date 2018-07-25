@@ -1,0 +1,74 @@
+@import 'variable';
+@import 'trimble';
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@text-ellipsis: {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+;
+@font-face {
+    font-family: @icon-family;
+    src: url('./Fonts/icon.ttf');
+}
+
+.icon {
+    font-family: @icon-family;
+    &.icon-cancel {
+        &:before {
+            content: @icons-cancel;
+        }
+    }
+}
+
+.btn {
+    :not(.icon) {
+        @text-ellipsis();
+    }
+    &:not([type="button"]) {
+        display: flex;
+        justify-content: center;
+        align-items: center;   
+    }
+    &[type="button"]{
+        @text-ellipsis();
+    };
+    outline: none;
+    border: none;
+    border-radius: @3px;
+    padding: @12px;
+    height: @56px;
+    min-width: @224px;
+    width: 20%;
+    font: @fw-600 @fs-18 @btn-font-family;
+    color: @ffffff;
+    text-transform: capitalize;
+    background-color: @btn-bg-color-default;
+    background-position: center;
+    /* Safari */
+    -webkit-transition: background 1s ease;
+    transition: background 1s ease;
+    &:active {
+        background-color: @btn-bg-color-active;
+        background-size: 100%;
+        /* Safari */
+        -webkit-transition: background 0s ease;
+        transition: background 0s ease;
+    }
+    &[disabled],
+    &-disabled {
+        Opacity: 0.4;
+        pointer-events: none;
+    }
+    & .icon {
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 100;
+    }
+}
