@@ -1,5 +1,7 @@
 @import 'variable';
-@import 'trimble';
+@import './../styles';
+@import '@{theme}';
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -43,9 +45,8 @@
     border: none;
     border-radius: @3px;
     padding: @12px;
-    height: @56px;
     min-width: @224px;
-    width: 20%;
+    height: @56px;
     font: @fw-600 @fs-18 @btn-font-family;
     color: @ffffff;
     text-transform: capitalize;
@@ -69,6 +70,7 @@
     & .icon {
         font-size: 32px;
         font-style: normal;
-        font-weight: 100;
+        font-weight: normal;
+        margin-right: @2px;
     }
 }

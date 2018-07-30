@@ -1,14 +1,43 @@
 <div class='row'>
-    <button class='btn' [disabled]="isDisabled">
-        <i class='icon icon-cancel'></i>
-        <span>cancel cancel cancel cancel cancel cancel cancel</span>
-    </button>
-    <a class='btn' [ngClass]="{'btn-disabled':isDisabled}">
-        <i class='icon icon-cancel'></i>
-        <span>cancel cancel cancel cancel cancel cancel cancel</span>
-    </a>
-    <input type="button" class='btn' [disabled]="isDisabled" value="cancel cancel cancel cancel cancel cancel cancel">
-</div>
+    <div class="btn-wrapper">
+        <div>Button Element</div>
+        <button class='btn button-demo-btn' [disabled]="isDisabled">
+            <i class='icon icon-cancel'></i>
+            <span>cancel cancel cancel cancel cancel cancel cancel</span>
+        </button>
+    </div>
+    <div class="btn-wrapper">
+        <div>Anchor Element</div>
+        <a class='btn button-demo-btn' [ngClass]="{'btn-disabled':isDisabled}">
+            <i class='icon icon-cancel'></i>
+            <span>cancel cancel cancel cancel cancel cancel cancel</span>
+        </a>
+    </div>
+    <div class="btn-wrapper">
+        <div> Input Element</div>
+        <input type="button" class='btn button-demo-btn' [disabled]="isDisabled" value="cancel cancel cancel cancel cancel cancel cancel">
+    </div>
+    </div>
 <div class='row'>
-    <button class='btn' (click)="toggle()">Toggle buttons</button>
+    <div class="btn-wrapper">
+        <div>Default State</div>
+        <button class='btn button-demo-btn' >
+            <i class='icon icon-cancel'></i>
+            <span>cancel</span>
+        </button>
+    </div>
+    <div class="btn-wrapper">
+        <div>Active State</div>
+        <button class='btn button-demo-btn' >
+            <i class='icon icon-cancel'></i>
+            <span>cancel</span>
+        </button>
+    </div>
+    <div class="btn-wrapper">
+        <div>Disabled State</div>
+        <button class='btn button-demo-btn' [disabled]="'true'">
+            <i class='icon icon-cancel'></i>
+            <span>cancel</span>
+        </button>
+    </div>
 </div>

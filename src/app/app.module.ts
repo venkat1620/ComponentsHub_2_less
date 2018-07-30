@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NumpadModule } from './numpad/numpad.module';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
+import { StatesIndicatorComponent } from './states-indicator/states-indicator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonDemoComponent
+    ButtonDemoComponent,
+    StatesIndicatorComponent
   ],
   imports: [
     BrowserModule,

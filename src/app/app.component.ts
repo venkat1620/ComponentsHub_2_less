@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as less from 'less';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title = 'app';
     value = '123456789012345678901234567890123456789012345678901234567890';
-    onClick(event) {
-      console.log(JSON.stringify(event.target.id) + 'clicked');
+    theme = 'caterpillar';
+
+    toggleTheme() {
+      this.theme = (this.theme === 'trimble') ? 'caterpillar' : 'trimble';
+      less.modifyVars({
+        '@theme': this.theme
+      });
+      // Have less refresh the stylesheets
+      less.refreshStyles();
     }
+
     constructor() {
+      less.watch();
     }
 }
