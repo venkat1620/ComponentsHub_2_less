@@ -10,6 +10,8 @@ export class AppComponent {
     title = 'app';
     value = '123456789012345678901234567890123456789012345678901234567890';
     theme = 'caterpillar';
+    state = 'auto';
+    autoSide = 'both';
 
     toggleTheme() {
       this.theme = (this.theme === 'trimble') ? 'caterpillar' : 'trimble';
@@ -20,6 +22,9 @@ export class AppComponent {
       less.refreshStyles();
     }
 
+    changeState() {
+      this.state = (this.state === 'auto') ? 'manual' : 'auto';
+    }
     constructor() {
       less.watch();
     }

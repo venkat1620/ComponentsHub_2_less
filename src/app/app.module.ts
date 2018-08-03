@@ -5,18 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NumpadModule } from './numpad/numpad.module';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
-import { StatesIndicatorComponent } from './states-indicator/states-indicator.component';
+import { StateIndicatorModule } from './states-indicator/state-indicator.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonDemoComponent,
-    StatesIndicatorComponent
+    ButtonDemoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     NumpadModule,
+    StateIndicatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

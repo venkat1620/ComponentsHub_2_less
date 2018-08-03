@@ -2,7 +2,16 @@
   <h1 style="margin:20px;font-size:5vw">
     Components Hub
   </h1>
-  <button-demo></button-demo>
+
+  <div class="dummy-container">
+    <states-indicator [side]="'center-down'" [state]="state" [autosSide]="autoSide">
+      
+    </states-indicator>
+  </div>
+  <button (click)="changeState()">click</button>
+  <button (click)="autoSide='Left'">left</button>
+  <button (click)="autoSide='right'">Right</button>
+  <button (click)="autoSide='both'">both</button>
 
 </div>
 <!-- <button-demo></button-demo>-->
