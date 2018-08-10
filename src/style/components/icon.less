@@ -1,0 +1,29 @@
+@import '../variable';
+@import '../common-mixins';
+
+// icons
+.icon {
+    font-family: @icon-family;
+    font-style: normal;
+    font-weight: normal;
+    
+    &.icon-cancel {
+        &:before {
+            content: @icon-cancel;
+        }
+    }
+    &.icon-arrow-left {
+        &:before {
+            content: @icon-arrow;
+            transform: rotate(90deg);
+            display: block;
+        }
+    }
+    &.icon-arrow-right {
+        &:before {
+            content: @icon-arrow;
+            transform: rotate(-90deg);
+            display: block;
+        }
+    }
+}

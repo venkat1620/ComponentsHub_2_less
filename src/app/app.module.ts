@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NumpadModule } from './numpad/numpad.module';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
 import { StateIndicatorModule } from './states-indicator/state-indicator.module';
+import { AutosStateIndicatorModule } from './autos-state-indicator/autos-state-indicator.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StateIndicatorModule } from './states-indicator/state-indicator.module'
     BrowserModule,
     FormsModule,
     NumpadModule,
-    StateIndicatorModule
+    StateIndicatorModule,
+    AutosStateIndicatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

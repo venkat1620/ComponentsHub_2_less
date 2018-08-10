@@ -1,19 +1,40 @@
 <div style="text-align:center">
-  <h1 style="margin:20px;font-size:5vw">
-    Components Hub
-  </h1>
-
+  <h3 style="margin:20px;font-size:4vw">
+    Auto State indicator
+  </h3>
   <div class="dummy-container">
-    <states-indicator [side]="'center-down'" [state]="state" [autosSide]="autoSide">
-      
+    <states-indicator [displayInCenter]="displayInCenter" [autosState]="autosState" [autosSide]="autoSide" [isAlignedRight]="isAlignedRight">
+        <i class='icon icon-arrow-left' left-icon></i>
+        <i class='icon icon-arrow-right' right-icon></i>
     </states-indicator>
   </div>
-  <button (click)="changeState()">click</button>
-  <button (click)="autoSide='Left'">left</button>
-  <button (click)="autoSide='right'">Right</button>
-  <button (click)="autoSide='both'">both</button>
-
+<div class='row'>
+  <button class='btn' (click)="autosState=!autosState">click</button>
+  <button class='btn' (click)="autoSide='Left'">left</button>
+  <button class='btn' (click)="autoSide='right'">Right</button>
+  <button class='btn' (click)="autoSide='both'">both</button>
+  <button class='btn' (click)="isAlignedRight=!isAlignedRight">alignRight</button>
 </div>
+  
+</div>
+
+<!--<div class="dummy-container">
+    <autos-state-indicator [alignCenter]='alignCenter'></autos-state-indicator>
+  </div>-->
+<!--
+ <div class="dummy-container">
+    <states-indicator [side]="'center-down'" [state]="state" [autosSide]="autoSide">
+        <i class='icon icon-arrow-left' left-icon></i>
+        <i class='icon icon-arrow-right' right-icon></i>
+    </states-indicator>
+  </div>
+<div class='row'>
+  <button class='btn' (click)="changeState()">click</button>
+  <button class='btn' (click)="autoSide='Left'">left</button>
+  <button class='btn' (click)="autoSide='right'">Right</button>
+  <button class='btn' (click)="autoSide='both'">both</button>
+</div> 
+-->
 <!-- <button-demo></button-demo>-->
 <!--<app-light-bar></app-light-bar>-->
 

@@ -1,0 +1,22 @@
+@flex-display: {
+    display: flex;
+};
+
+@inline-flex-display: {
+    display: inline-flex;
+};
+
+@flex-perfect-centering: {
+    justify-content: center;
+    align-items: center;
+};
+
+.flex-with-perfect-centering() {
+    @flex-display();
+    @flex-perfect-centering();
+}
+
+.inline-flex-with-perfect-centering() {
+    @inline-flex-display();
+    @flex-perfect-centering();
+}

@@ -1,25 +1,12 @@
-<div class="state-indicator-container">
-    <div class="state-indicator-wrapper">
-      <div class="state-indicator-background">
-        <div class="left-right" #leftright>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- viewBox="0 0 381.3 90.9" xml:space="preserve">
-            <path class="st1" d="M377.4-0.2H0v89.8c0.1,0,0.2,0,0.2,0h354c5.7-0.2,10.4-4.3,11.5-9.9l14.4-77l0.5-2.9H377.4z"/>
-            <path class="st0" stroke="#000" stroke-width="3" d="M0,89.5h353.2c5.7-0.2,10.4-4.3,11.5-9.9l14.4-77l0.5-2.9"/>
-          </svg>
-        </div>
-        <div class="center" #center>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- viewBox="0 0 412.7 91.3" xml:space="preserve">
-            <path class="st0" d="M5.7,0L2.9,0l0.5,2.9l14.4,77c1.1,5.6,5.8,9.7,11.5,9.9h354c5.7-0.2,10.4-4.3,11.5-9.9l14.4-77l0.5-2.9h-3.2
-H5.9"/>      <path class="st1" stroke="#000" stroke-width="3" d="M2.9,0l0.5,2.9l14.4,77c1.1,5.6,5.8,9.7,11.5,9.9h354c5.7-0.2,10.4-4.3,11.5-9.9l14.4-77l0.5-2.9"/>
-          </svg>
-        </div>
-      </div>
-      <div class="state-indicator-content" #stateContent>
-        <i class='icon icon-arrow-left' *ngIf="showLeftArrow"></i>
-        <span class="state" id="stateTxt"></span>
-        <i class='icon icon-arrow-right' *ngIf="showRightArrow"></i>
-      </div>
-    </div>
+<div class="state-indicator-wrapper">
+  <div class="state-indicator-background" [ngClass]="{'right': isAlignedRight,'auto': autosState}">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <use [attr.xlink:href]="backgroundImage" />
+    </svg>
   </div>
+  <div class="state-indicator-content" >
+    <ng-content select=[left-icon] [ngClass]="{'displayLeftIcon': showLeftSideIcon}"></ng-content>
+    <span class="state" [ngClass]="{'auto': autosState}"></span>
+    <ng-content select=[right-icon] [ngClass]="{'displayRighttIcon': showRighSideIcon}"></ng-content>
+  </div>
+</div>

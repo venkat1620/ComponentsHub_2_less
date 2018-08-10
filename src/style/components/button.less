@@ -1,31 +1,18 @@
-@import 'variable';
-@import './../styles';
-@import '@{theme}';
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-@text-ellipsis: {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-};
-
 .btn {
-    :not(.icon) {
+    @text-ellipsis: {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    ;
+    .text,
+    input& {
         @text-ellipsis();
     }
-    &:not([type="button"]) {
-        display: flex;
-        justify-content: center;
-        align-items: center;   
+    a&,
+    button& {
+        .flex-with-perfect-centering();
     }
-    &[type="button"]{
-        @text-ellipsis();
-    };
     outline: none;
     border: none;
     border-radius: @3px;
@@ -37,12 +24,10 @@
     text-transform: capitalize;
     background-color: @btn-bg-color-default;
     background-position: center;
-    -webkit-transition: background 1s ease;
     transition: background 1s ease;
     &:active {
         background-color: @btn-bg-color-active;
         background-size: 100%;
-        -webkit-transition: background 0s ease;
         transition: background 0s ease;
     }
     &[disabled],
@@ -50,7 +35,7 @@
         Opacity: 0.4;
         pointer-events: none;
     }
-    & .icon {
+    .icon {
         font-size: 32px;
         margin-right: @2px;
     }
