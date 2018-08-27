@@ -1,0 +1,55 @@
+@flex: {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+};
+@restrictSelection: {
+    user-select: none;
+    cursor: default;
+};
+
+swipe-button {
+    position: relative;
+    background-color: #0D6AA8;
+    width: 300px;
+    height: 56px;
+    border: white;
+    border-radius: 3px;
+    @flex();
+    .button-slider {
+        position: absolute;
+        left: 7px;
+        background-color: #2C8CCB;
+        width: 20%;
+        height: 80%;
+        border-radius: 3px;
+        @flex();
+        &.selected {
+            transition: all 0.4s;
+            width: inherit;
+            height: inherit;
+            left: 0 !important;
+        }
+        .icon{
+            color: #FFFFFF;
+	        font-size: 32px;
+	        @restrictSelection();
+        }
+        &.resetSlider {
+            left: 7px !important;
+            transition: left 0.5s;
+        }
+    }
+    .button-txt {
+        color: #FFFFFF;;
+        font-size: 18px;
+        font-family: @btn-font-family;
+        text-transform: capitalize;
+        @restrictSelection();
+        opacity: 1;
+        &.resetText {
+            opacity: 1 !important;
+            transition: opacity 0.8s;
+        }
+    }
+}

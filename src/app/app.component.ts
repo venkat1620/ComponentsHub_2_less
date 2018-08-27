@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as less from 'less';
+import { StateIndicatorAlignment } from './states-indicator/state-indicator.model';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +10,34 @@ export class AppComponent {
     title = 'app';
     value = '123456789012345678901234567890123456789012345678901234567890';
     theme = 'caterpillar';
-   
-    autoSide = 'both';
+
+    isAlignedRight = true;
+    autosState = true;
+    alignment = StateIndicatorAlignment.Center;
+    show = true;
+
 
     alignCenter = false;
-    isAlignedRight = true;
-    autosState = false;
     displayInCenter = true;
 
+    left: boolean;
+    right: boolean;
 
-    toggleTheme() {
-      this.theme = (this.theme === 'trimble') ? 'caterpillar' : 'trimble';
-      less.modifyVars({
-        '@theme': this.theme
-      });
-      // Have less refresh the stylesheets
-      less.refreshStyles();
-    }
 
     constructor() {
-      less.watch();
+      this.left = false;
+      this.right = false;
+    }
+
+    showLeftSideIcon() {
+      return this.left = !this.left;
+    }
+
+    showRighSideIcon() {
+      return this.right = !this.right;
+    }
+
+    public clicked() {
+      console.log('accepted');
     }
 }

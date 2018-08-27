@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StatesIndicatorComponent } from './states-indicator.component';
+import { AutosStateIndicatorComponent } from './states-indicator.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    StatesIndicatorComponent
+    AutosStateIndicatorComponent
   ],
   exports: [
-    StatesIndicatorComponent
+    AutosStateIndicatorComponent
   ]
 })
-export class StateIndicatorModule { }
+export class AutosStateIndicatorModule { }

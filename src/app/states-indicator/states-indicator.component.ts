@@ -1,35 +1,26 @@
-import {
-  Component, OnInit, Input, ViewEncapsulation
-} from '@angular/core';
+import {  Component, Input, OnInit } from '@angular/core';
+import { StateIndicatorAlignment, autosStateIndicatorBackground } from './state-indicator.model';
 
 @Component({
-  selector: 'states-indicator',
-  templateUrl: './states-indicator.component.html',
-  encapsulation: ViewEncapsulation.None
+  selector: 'autos-states-indicator',
+  templateUrl: './states-indicator.component.html'
 })
-export class StatesIndicatorComponent implements OnInit {
+export class AutosStateIndicatorComponent implements OnInit {
 
-  @Input() public autosState: boolean;
-  @Input() public autosSide: string;
-  @Input() public displayInCenter: boolean;
-  @Input() public isAlignedRight: boolean;
+  @Input()
+  public isStateInAutos: boolean;
+
+  @Input()
+  public alignment: StateIndicatorAlignment;
+
+  @Input()
+  public alignRight: boolean;
+
+  public backgroundImage: string;
 
   constructor() { }
 
-  ngOnInit() { }
-
-  /**
-   * background image for the indicator
-   */
-  public get backgroundImage(): string {
-    const path = 'assets/';
-    return (this.displayInCenter) ? path + 'autos-state-background.svg#image' : path + 'autos-state-background-left.svg#image';
-  }
-
-  public get showLeftSideIcon(): boolean {
-    return false;
-  }
-  public get showRighSideIcon(): boolean {
-    return false;
+  public ngOnInit() {
+    this.backgroundImage = autosStateIndicatorBackground[this.alignment];
   }
 }

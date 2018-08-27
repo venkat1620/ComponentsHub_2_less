@@ -4,7 +4,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'button-demo',
   templateUrl: './button-demo.component.html',
   styleUrls: ['./button-demo.component.less'],
-  encapsulation: ViewEncapsulation.None
 })
 export class ButtonDemoComponent implements OnInit {
 

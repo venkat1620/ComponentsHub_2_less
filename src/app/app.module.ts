@@ -5,20 +5,21 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NumpadModule } from './numpad/numpad.module';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
-import { StateIndicatorModule } from './states-indicator/state-indicator.module';
-import { AutosStateIndicatorModule } from './autos-state-indicator/autos-state-indicator.module';
+import { AutosStateIndicatorModule } from './states-indicator/state-indicator.module';
+import { SwipeButtonModule } from './swipe-button-final/swipe-button.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonDemoComponent
+    ButtonDemoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     NumpadModule,
-    StateIndicatorModule,
-    AutosStateIndicatorModule
+    AutosStateIndicatorModule,
+    AutosStateIndicatorModule,
+    SwipeButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

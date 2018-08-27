@@ -1,23 +1,34 @@
 <div style="text-align:center">
   <h3 style="margin:20px;font-size:4vw">
-    Auto State indicator
+    swipe button
   </h3>
-  <div class="dummy-container">
-    <states-indicator [displayInCenter]="displayInCenter" [autosState]="autosState" [autosSide]="autoSide" [isAlignedRight]="isAlignedRight">
-        <i class='icon icon-arrow-left' left-icon></i>
-        <i class='icon icon-arrow-right' right-icon></i>
-    </states-indicator>
-  </div>
-<div class='row'>
-  <button class='btn' (click)="autosState=!autosState">click</button>
-  <button class='btn' (click)="autoSide='Left'">left</button>
-  <button class='btn' (click)="autoSide='right'">Right</button>
-  <button class='btn' (click)="autoSide='both'">both</button>
-  <button class='btn' (click)="isAlignedRight=!isAlignedRight">alignRight</button>
-</div>
-  
-</div>
 
+  <swipe-button (clicked)="clicked()"  *ngIf="show"></swipe-button>
+  
+  <!--<div class="background">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <use xlink:href="assets/autos-state-background-right.svg#image" />
+    </svg>
+  </div>-->
+</div>
+<!--<button-demo></button-demo>-->
+<!--
+  <div class="dummy-container">
+    <autos-states-indicator [displayInCenter]="displayInCenter" [isStateInAutos]="autosState" [alignRight]="isAlignedRight">
+        <i class='icon icon-arrow-left' left-icon *ngIf='left'></i>
+        <i class='icon icon-arrow-right' right-icon *ngIf='right'></i>
+    </autos-states-indicator>
+  </div>
+  <div class='row'>
+    <button class='btn' (click)="autosState=!autosState">Change State</button>
+    <button class='btn' (click)="left=true;right=false">left</button>
+    <button class='btn' (click)="right=true;left=false">Right</button>
+    <button class='btn' (click)="left=true;right=true">both</button>
+    <button class='btn' (click)="isAlignedRight=!isAlignedRight">alignRight</button>
+    <button class='btn' (click)="displayInCenter=!displayInCenter">DisplayinCenter</button>
+  </div>
+-->
+<!---->
 <!--<div class="dummy-container">
     <autos-state-indicator [alignCenter]='alignCenter'></autos-state-indicator>
   </div>-->

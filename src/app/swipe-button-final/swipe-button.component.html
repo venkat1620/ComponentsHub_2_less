@@ -1,0 +1,5 @@
+<span class="button-txt" id='txt' [ngClass]="{'resetText': resetText}" [ngStyle]="{'opacity': textOpacity}">
+	Swipe To Accept</span>
+<div class="button-slider" id='slider' [ngClass]="{'resetSlider': resetSlider, 'selected': selected }" [ngStyle]="{'left.px': sliderLeftPos}">
+	<i class='icon' [ngClass]="{'icon-arrow-right':!selected,'icon-accept': selected}"></i>
+</div>

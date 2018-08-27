@@ -1,12 +1,12 @@
 <div class="state-indicator-wrapper">
-  <div class="state-indicator-background" [ngClass]="{'right': isAlignedRight,'auto': autosState}">
+  <div class="state-indicator-background" [ngClass]="{'right': alignRight,'auto': isStateInAutos}">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <use [attr.xlink:href]="backgroundImage" />
     </svg>
   </div>
   <div class="state-indicator-content" >
-    <ng-content select=[left-icon] [ngClass]="{'displayLeftIcon': showLeftSideIcon}"></ng-content>
-    <span class="state" [ngClass]="{'auto': autosState}"></span>
-    <ng-content select=[right-icon] [ngClass]="{'displayRighttIcon': showRighSideIcon}"></ng-content>
+    <ng-content select=[left-icon] ></ng-content>
+    <span class="state" [ngClass]="{'auto': isStateInAutos}"></span>
+    <ng-content select=[right-icon] ></ng-content>
   </div>
 </div>

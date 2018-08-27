@@ -1,46 +1,58 @@
-.state-indicator-wrapper {
-    .inline-flex-with-perfect-centering();
-    width: @100-per;
-    min-width: @140px;
-    height: 32px;
-    position: relative;
-    .state-indicator-background {
-        height: @100-per;
-        fill: @AAAAAA;
-        transform: rotateX(@180Deg);
-        &.right {
-            transform: rotateX(@180Deg) rotateY(@180Deg);
-        }
-        &.auto {
-            fill: @00FE00;
-        }
-    }
-    .state-indicator-content {
-        .inline-flex-with-perfect-centering();
-        width: @100-per;
-        height: @100-per;
-        position: absolute;
-        font-size: @24px;
-        .state {
-            height: 50%;
-            width: 45%;
-            background-size: @100-per @100-per;
-            background-repeat: no-repeat;
-            margin: 0 @6px;
-            background-image: url('./../../assets/manual.svg');
-            &.auto {
-                width: 30%;
-                background-image: url('./../../assets/auto.svg');
-            }
-            .displayLeftIcon,.displayRighttIcon{
-                visibility: visible;
-            }
-        }
-    }
+.height-width(@size){
+    height: @size;
+    width: @size;
 }
-
-;
-svg {
-    width: 100%;
-    height: 100%;
+.flex-center-row {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+@global-autos: '../../assets';
+.rotate-upSideDown(){
+    transform+_:rotateX(180deg);
+}
+autos-states-indicator {
+    display: inline-block;
+    .state-indicator-wrapper {
+        &:extend(.flex-center-row);
+        .height-width(100%);
+        position: relative;
+        .state-indicator-background,
+        .state-indicator-content {
+            .height-width(inherit);
+        }
+        .state-indicator-background {
+            fill: #AAAAAA;
+            .rotate-upSideDown();
+            &.right {
+                .rotate-upSideDown();
+                transform+_: scaleX(-1);
+            }
+            &.auto {
+                fill: #00FE00;
+            }
+            svg {
+                .height-width(100%);
+            }
+        }
+        .state-indicator-content {
+            &:extend(.flex-center-row);
+            position: absolute;
+            .state {
+                height: 50%;
+                width: 45%;
+                margin: 0 6px;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-image: url('@{global-autos}/manual.svg');
+                &.auto {
+                    width: 30%;
+                    background-image: url('@{global-autos}/auto.svg');
+                }
+            }
+            .icon {
+                font-size: 100%;
+            }
+        }
+    }
 }
