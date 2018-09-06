@@ -8,9 +8,9 @@
     justify-content: center;
 }
 @global-autos: '../../assets';
-.rotate-upSideDown(){
+/* .rotateDown(){
     transform+_:rotateX(180deg);
-}
+}*/
 autos-states-indicator {
     display: inline-block;
     .state-indicator-wrapper {
@@ -23,10 +23,11 @@ autos-states-indicator {
         }
         .state-indicator-background {
             fill: #AAAAAA;
-            .rotate-upSideDown();
+            transform:rotateX(180deg);
             &.right {
-                .rotate-upSideDown();
-                transform+_: scaleX(-1);
+               // .rotate-upSideDown();
+               //transform+_:rotateX(180deg);
+               transform+_: scaleX(-1);
             }
             &.auto {
                 fill: #00FE00;

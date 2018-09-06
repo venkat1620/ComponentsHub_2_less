@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, Renderer2, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, Renderer2, HostListener, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'swipe-button',
@@ -20,8 +20,11 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
   public sliderLeftPos: number;
   public selected: boolean;
 
+  @Input()
+  public btnText = 'swipe to accept' ;
+
   @Output()
-  public clicked: EventEmitter<any> = new EventEmitter();
+  public click: EventEmitter<any> = new EventEmitter();
 
   @HostListener('touchstart', ['$event'])
   public ontouchstart = ($event) => this.initSliderValue($event)
@@ -55,8 +58,10 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     this.startPosition = event.clientX || event.touches[0].pageX;
     this.resetText = false;
     this.resetSlider = false;
-    this.textOpacity = 1;
-    this.sliderLeftPos = this.defSliderLeftPos;
+    if (this.totalSlideDistance > 0) {
+       this.textOpacity = 1;
+       this.sliderLeftPos = this.defSliderLeftPos;
+    }
   }
 
   private resetOrSelect(event) {
@@ -73,7 +78,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
 
     if (this.totalSlideDistance > 0) {
       this.selected = true;
-      this.clicked.emit();
+      this.click.emit();
     }
   }
 
