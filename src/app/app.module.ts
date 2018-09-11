@@ -7,6 +7,7 @@ import { NumpadModule } from './numpad/numpad.module';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
 import { AutosStateIndicatorModule } from './states-indicator/state-indicator.module';
 import { SwipeButtonModule } from './swipe-button-final/swipe-button.module';
+import { HammerDemoModule } from './hammer-demo/hammer-demo.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SwipeButtonModule } from './swipe-button-final/swipe-button.module';
     NumpadModule,
     AutosStateIndicatorModule,
     AutosStateIndicatorModule,
-    SwipeButtonModule
+    SwipeButtonModule,
+    HammerDemoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

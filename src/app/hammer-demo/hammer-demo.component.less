@@ -1,0 +1,29 @@
+:host {
+    height: 88px;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    background: #414141;
+    border-left: 10px solid #6E6E6E;
+    border-right: 10px solid #6E6E6E;
+    .box {
+        height: 100%;
+        display: inline-flex;
+        &.isAnimating{
+          transition: transform 500ms linear;
+        }
+        .innerBoxes {
+            height: 100%;
+            color: #fff;
+            &::after {
+                content: '';
+                height: 40%;
+                float: right;
+                border-left: 3px solid #6E6E6E;
+                position: relative;
+                top: 20%;
+                right: 4px;
+            }
+        }
+    }
+}

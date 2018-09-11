@@ -26,9 +26,6 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
   @Output()
   public click: EventEmitter<any> = new EventEmitter();
 
-  @HostListener('touchstart', ['$event'])
-  public ontouchstart = ($event) => this.initSliderValue($event)
-
   constructor(private hostRef: ElementRef, private renderer: Renderer2) {
     this.startPosition = 0;
     this.totalSlideDistance = 0;
@@ -44,7 +41,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
       }),
       this.renderer.listen('body', 'touchmove', ($event) => {
         this.moveSlider($event);
-      })
+      }),
     );
   }
 

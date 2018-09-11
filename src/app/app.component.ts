@@ -23,6 +23,8 @@ export class AppComponent {
     left: boolean;
     right: boolean;
 
+    public innerTextItems =  [1, 2 , 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    public velocity: number;
 
     constructor() {
       this.left = false;
@@ -38,6 +40,10 @@ export class AppComponent {
     }
 
     public clicked() {
-      console.log('accepted');
+      this.innerTextItems.push(this.innerTextItems.length + 1);
+    }
+
+    public updateVelocity(e) {
+      this.velocity = e.velocityX;
     }
 }

@@ -1,17 +1,24 @@
 <div style="text-align:center">
   <h3 style="margin:20px;font-size:4vw">
-    swipe button
+    swipe components
   </h3>
 
   <swipe-button (clicked)="clicked()"></swipe-button>
-  
-  <!--<div class="background">
+  <div class='swipe-Container'>
+    <hammer-demo [innerTextItems]='innerTextItems' (dummyEmit)='updateVelocity($event)'></hammer-demo><div class='dummy'></div>
+  </div>
+  <div class='swipe-Container'>
+    <input type="button" class='btn' value='increment' (click)='clicked()'>
+    <div [innerHTML]='velocity'></div>
+  </div>
+</div>
+
+<!--<button-demo></button-demo>-->
+ <!--<div class="background">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <use xlink:href="assets/autos-state-background-right.svg#image" />
     </svg>
   </div>-->
-</div>
-<!--<button-demo></button-demo>-->
 <!--
   <div class="dummy-container">
     <autos-states-indicator [displayInCenter]="displayInCenter" [isStateInAutos]="autosState" [alignRight]="isAlignedRight">
