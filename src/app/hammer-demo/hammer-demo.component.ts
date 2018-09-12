@@ -1,10 +1,11 @@
-import { Component, ElementRef, Renderer2, Input, } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 
 const TextItemsToBeShown = new Map<number, number>([
   [800, 3],
   [1200, 4],
   [1280, 4],
-  [640, 3]
+  [640, 3],
+  [962, 3]
 ]);
 
 @Component({
@@ -14,11 +15,11 @@ const TextItemsToBeShown = new Map<number, number>([
 })
 export class HammerDemoComponent {
 
-  public isAnimating = false;
+  public isSliding = false;
   public translateX = 0;
 
   @Input()
-  public innerTextItems: number[];
+  public textItems: number[];
 
   private previousSlideValue = 0;
   private textItemsToBeShown: number;
@@ -33,53 +34,52 @@ export class HammerDemoComponent {
   }
 
   public get textItemSliderWidth() {
-    return this.innerTextItems.length * this.textItemsWidth;
+    return this.textItems.length * this.textItemsWidth;
   }
 
   private get maxTranslateX() {
     return -(this.textItemSliderWidth - (this.textItemsWidth * this.textItemsToBeShown));
   }
 
-  public onPan(e) {
+  public slideTextItems(event) {
+    this.translateX = this.previousSlideValue + event.deltaX;
+    if (event.isFinal) {
 
-    this.translateX = this.previousSlideValue + e.deltaX;
-    if (e.isFinal) {
+      this.isSliding = true;
+      this.previousSlideValue += event.deltaX;
 
-      this.isAnimating = true;
-      this.previousSlideValue += e.deltaX;
-
-      if (this.previousSlideValue + e.deltaX > 0) {
+      if (this.previousSlideValue + event.deltaX > 0) {
         this.translateX = this.minTranslateX;
-      } else if (this.previousSlideValue + e.deltaX < this.maxTranslateX) {
+      } else if (this.previousSlideValue + event.deltaX < this.maxTranslateX) {
         this.translateX = this.maxTranslateX;
       } else {
-        if (Math.abs(e.velocityX) > 1.5) {
+        if (Math.abs(event.velocityX) >= 1) {
           let widthToAdjust;
-          if (e.velocityX < 0) {
-            widthToAdjust = (this.previousSlideValue - e.deltaX) - (this.textItemsWidth *  this.textItemsToBeShown);
+          if (event.velocityX < 0) {
+            widthToAdjust = (this.previousSlideValue - event.deltaX) - (this.textItemsWidth *  this.textItemsToBeShown);
             this.translateX =  widthToAdjust < this.maxTranslateX ? this.maxTranslateX : widthToAdjust;
           } else {
-            widthToAdjust = (this.previousSlideValue - e.deltaX) + (this.textItemsWidth *  this.textItemsToBeShown);
+            widthToAdjust = (this.previousSlideValue - event.deltaX) + (this.textItemsWidth *  this.textItemsToBeShown);
             this.translateX = widthToAdjust > this.minTranslateX ? this.minTranslateX : widthToAdjust;
           }
-        } else if (Math.abs(e.deltaX) > this.textItemsWidth / 10) {
-          if (e.deltaX < 0) {
-            this.translateX = this.translateX - (this.textItemsWidth - Math.abs(e.deltaX));
+        } else if (Math.abs(event.deltaX) > this.textItemsWidth / 10) {
+          if (event.deltaX < 0) {
+            this.translateX = this.translateX - (this.textItemsWidth - Math.abs(event.deltaX));
           } else {
-            this.translateX = this.translateX + (this.textItemsWidth - Math.abs(e.deltaX));
+            this.translateX = this.translateX + (this.textItemsWidth - Math.abs(event.deltaX));
           }
         } else {
-          this.translateX = this.translateX - e.deltaX;
+          this.translateX = this.translateX - event.deltaX;
         }
       }
 
       this.previousSlideValue = this.translateX;
 
-      if (this.isAnimating) {
+      if (this.isSliding) {
         const removeAnimation = setTimeout(() => {
-          this.isAnimating = false;
+          this.isSliding = false;
           clearTimeout(removeAnimation);
-        }, 500);
+        }, 600);
       }
     }
   }

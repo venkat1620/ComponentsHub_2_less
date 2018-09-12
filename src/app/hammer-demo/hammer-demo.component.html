@@ -1,6 +1,6 @@
-<div class="box" [ngClass]="{ 'isAnimating': isAnimating}" [ngStyle]="{'transform': 'translateX(' + translateX + 'px)','width.px': textItemSliderWidth}"
-    (pan)="onPan($event)" #textItemslider>
-    <div class="innerBoxes" id="{{i}}" *ngFor="let i of innerTextItems" [ngStyle]="{'min-width.px': textItemsWidth}">
-        {{i}}
+<div class="text-items-slider" [ngClass]="{ 'sliding': isSliding}" [ngStyle]="{'transform': 'translateX(' + translateX + 'px)','width.px': textItemSliderWidth}"
+    (pan)="slideTextItems($event)">
+    <div class="text-items"  *ngFor="let i of textItems" [ngStyle]="{'min-width.px': textItemsWidth}">
+  
     </div>
 </div>

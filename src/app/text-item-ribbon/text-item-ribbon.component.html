@@ -1,0 +1,9 @@
+<div class="text-items-slider" [ngClass]="{ 'sliding': isSliding}" [ngStyle]="{'transform': 'translateX(' + sliderPosition + 'px)','width.px': sliderWidth}"
+    (transitionend)="resetSlider()">
+    <div class="text-items" *ngFor="let text of textItems" [ngStyle]="{'min-width.px': textItemsWidth}">
+        {{text.text}}
+    </div>
+</div>
+<ul class="active-items-indicator">
+    <li *ngFor="let text of textItems" [ngClass]="{'active': text.active}"></li>
+</ul>

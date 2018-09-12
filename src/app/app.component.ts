@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StateIndicatorAlignment } from './states-indicator/state-indicator.model';
+import { TextItem } from './text-item-ribbon/text-item-ribbon.registry';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,23 @@ export class AppComponent {
     left: boolean;
     right: boolean;
 
-    public innerTextItems =  [1, 2 , 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    public textItems: TextItem[] = [ new TextItem(1),
+                                     new TextItem(2),
+                                     new TextItem(3),
+                                     new TextItem(4),
+                                     new TextItem(5),
+                                     new TextItem(6),
+                                     new TextItem(7),
+                                     new TextItem(8),
+                                     new TextItem(9),
+                                     new TextItem(10),
+                                     new TextItem(11),
+                                     new TextItem(12),
+                                     new TextItem(13),
+                                     new TextItem(14),
+                                    ];
+                       // [ { text : 1 }, { text : 2 }, { text : 3 }, { text : 4 }, { text : 5 }, { text : 6 }, { text : 7 },
+                       // { text : 8 }, { text : 9 }, { text : 10 }, { text : 11 }, { text : 12 }, { text : 13 }, { text : 14 }];
     public velocity: number;
 
     constructor() {
@@ -40,7 +57,7 @@ export class AppComponent {
     }
 
     public clicked() {
-      this.innerTextItems.push(this.innerTextItems.length + 1);
+      this.textItems.push( new TextItem(this.textItems.length + 1) );
     }
 
     public updateVelocity(e) {

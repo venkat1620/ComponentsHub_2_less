@@ -5,7 +5,7 @@
 
   <swipe-button (clicked)="clicked()"></swipe-button>
   <div class='swipe-Container'>
-    <hammer-demo [innerTextItems]='innerTextItems' (dummyEmit)='updateVelocity($event)'></hammer-demo><div class='dummy'></div>
+    <text-item-ribbon [textItems]='textItems'></text-item-ribbon><div class='dummy'></div>
   </div>
   <div class='swipe-Container'>
     <input type="button" class='btn' value='increment' (click)='clicked()'>

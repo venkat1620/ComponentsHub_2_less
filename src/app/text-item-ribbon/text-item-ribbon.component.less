@@ -1,16 +1,15 @@
-:host {
+:host, text-item-ribbon {
     height: 88px;
     width: 100%;
-    display: inline-block;
     overflow: hidden;
     background: #414141;
     border-left: 10px solid #6E6E6E;
     border-right: 10px solid #6E6E6E;
     .text-items-slider {
-        height: 100%;
+        height: 88%;
         display: inline-flex;
-        &.sliding{
-          transition: transform 600ms linear;
+        &.sliding {
+            transition: transform 600ms linear;
         }
         .text-items {
             height: 100%;
@@ -23,6 +22,22 @@
                 position: relative;
                 top: 20%;
                 right: 4px;
+            }
+        }
+    }
+    .active-items-indicator{
+        list-style-type: none;
+        display: inline-flex;
+        vertical-align: top;
+        height: 12%;
+        li {
+            height: 6px;
+            width: 6px;
+            margin: 0 2px;
+            background: #ffffff;
+            border-radius: 50%;
+            &.active {
+                background: #FFA500
             }
         }
     }
