@@ -1,8 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 
 @Component({
-  selector: 'swipe-button',
+  selector: 'swipe-button-org',
   templateUrl: './swipe-button.component.html',
+  styleUrls: ['./swipe-button.less']
 })
 export class SwipeButtonComponent implements OnInit, AfterViewInit {
   public btnElems: { [id: string]: HTMLElement } = {};

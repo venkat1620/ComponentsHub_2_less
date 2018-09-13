@@ -18,4 +18,4 @@ import { SwipeButtonService } from './swipe-button.service';
   providers: [ SwipeButtonService ]
 
 })
-export class SwipeButtonModule { }
+export class SwipeButtonModuleOrg { }
