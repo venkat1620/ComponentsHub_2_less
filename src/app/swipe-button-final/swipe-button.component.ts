@@ -49,7 +49,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     this.listeners.forEach(listenerFunc => listenerFunc());
   }
 
-  private initSliderValue(event) {
+  public initSliderValue(event) {
     this.isMouseDown = true;
     this.totalSlideDistance = this.hostEl.clientWidth - this.hostEl.children['slider'].clientWidth;
     this.startPosition = event.clientX || event.touches[0].pageX;
