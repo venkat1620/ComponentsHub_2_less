@@ -1,13 +1,5 @@
 import { Component, ElementRef, Input, OnInit, HostListener } from '@angular/core';
-import { TextItem } from './text-item-ribbon.registry';
-
-const textItemsCapacity = new Map<number, number>([
-  [800, 3],
-  [1200, 4],
-  [1280, 4],
-  [640, 3],
-  [962, 3]
-]);
+import { TextItem, textItemsCapacity } from './text-item-ribbon.registry';
 
 @Component({
   selector: 'text-item-ribbon',
@@ -25,7 +17,7 @@ export class TextItemRibbonComponent implements OnInit {
   private sliderPrevPosition = 0;
   private sliderInitialPosition = 0;
   private maxSwipeVelocity = 1;
-  private maxPanThreshold = 10;
+  private maxPanThreshold = 8;
   private textItemsCapacity = textItemsCapacity.get(window.innerWidth);
 
   constructor(private hostRef: ElementRef) {
