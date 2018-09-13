@@ -1,5 +1,5 @@
 <span class="button-txt" id='txt' [ngClass]="{'resetText': resetText}" [ngStyle]="{'opacity': textOpacity}">
 	{{btnText}}</span>
-<div class="button-slider" id='slider' [ngClass]="{'resetSlider': resetSlider, 'selected': selected }" [ngStyle]="{'left.px': sliderLeftPos}" (touchstart)='initSliderValue($event)'>
+<div class="button-slider" id='slider' [ngClass]="{'resetSlider': resetSlider, 'selected': selected }" [ngStyle]="{'left.px': sliderLeftPos}" (touchstart)='initSlider($event)'>
 	<i class='icon' [ngClass]="{'icon-arrow-right':!selected,'icon-accept': selected}"></i>
 </div>

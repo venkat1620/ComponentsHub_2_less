@@ -6,9 +6,9 @@ import { Component, OnInit, OnDestroy, ElementRef, Renderer2, HostListener, Outp
   styleUrls: ['./swipe-button.less']
 })
 export class SwipeButtonComponent implements OnInit, OnDestroy {
-  private startPosition: number;
-  private totalSlideDistance: number;
-  private isMouseDown: boolean;
+  private startPosition = 0;
+  private totalSlideDistance = 0;
+  private isMouseDown = false;
   private hostEl;
   private listeners: Function[] = [];
   // default css property values of Swipe button
@@ -18,7 +18,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
   public resetSlider: boolean;
   public textOpacity: number;
   public sliderLeftPos: number;
-  public selected: boolean;
+  public selected = false;
 
   @Input()
   public btnText = 'swipe to accept' ;
@@ -27,11 +27,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
   public click: EventEmitter<any> = new EventEmitter();
 
   constructor(private hostRef: ElementRef, private renderer: Renderer2) {
-    this.startPosition = 0;
-    this.totalSlideDistance = 0;
-    this.isMouseDown = false;
     this.hostEl = this.hostRef.nativeElement;
-    this.selected = false;
   }
 
   public ngOnInit() {
@@ -49,7 +45,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     this.listeners.forEach(listenerFunc => listenerFunc());
   }
 
-  public initSliderValue(event) {
+  public initSlider(event) {
     this.isMouseDown = true;
     this.totalSlideDistance = this.hostEl.clientWidth - this.hostEl.children['slider'].clientWidth;
     this.startPosition = event.clientX || event.touches[0].pageX;

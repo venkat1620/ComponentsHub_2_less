@@ -57,7 +57,8 @@ export class TextItemRibbonComponent implements OnInit {
       if (this.sliderPrevPosition + event.deltaX > this.sliderInitialPosition) {
         this.sliderPosition = this.sliderInitialPosition;
       } else if (this.sliderPrevPosition + event.deltaX < this.maxSliderPosition) {
-        this.sliderPosition = this.maxSliderPosition;
+        this.sliderPosition = this.textItems.length < this.textItemsCapacity ?
+                                  this.sliderInitialPosition : this.maxSliderPosition;
       } else {
         this.calculateSliderPosition(event);
       }
@@ -106,6 +107,5 @@ export class TextItemRibbonComponent implements OnInit {
     this.textItems.map((textItem, key) => {
        textItem.active = (key >= startingTextItem && key <= endTextItem) ? true : false;
     });
-
   }
 }
