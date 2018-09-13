@@ -1,30 +1,43 @@
-import { Component, OnInit, OnDestroy, ElementRef, Renderer2, HostListener, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, ElementRef, Renderer2, OnDestroy, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
-  selector: 'swipe-button',
+  selector: 'swipe-button-tech',
   templateUrl: './swipe-button.component.html',
-  styleUrls: ['./swipe-button.less']
+  styleUrls: ['./swipe-button.component.less']
 })
 export class SwipeButtonComponent implements OnInit, OnDestroy {
+
   private startPosition = 0;
   private totalSlideDistance = 0;
-  private isMouseDown = false;
   private hostEl;
   private listeners: Function[] = [];
-  // default css property values of Swipe button
   private defSliderLeftPos = 7;
 
-  public resetText: boolean;
-  public resetSlider: boolean;
+  public reset: boolean;
   public textOpacity: number;
   public sliderLeftPos: number;
-  public selected = false;
 
   @Input()
   public btnText = 'swipe to accept';
 
+  @Input()
+  public accptedText = 'accepted';
+
+  @Input()
+  public isDisabled = false;
+
   @Output()
   public click: EventEmitter<any> = new EventEmitter();
+
+  @HostBinding('class.accepted') public isAccepted: boolean;
+
+  @HostBinding('class.active') public isActive: boolean;
+
+  @HostBinding('class.disabled')
+  public get disable(): boolean {
+    return this.isDisabled;
+  }
 
   constructor(private hostRef: ElementRef, private renderer: Renderer2) {
     this.hostEl = this.hostRef.nativeElement;
@@ -33,7 +46,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
   public ngOnInit() {
     this.listeners.push(
       this.renderer.listen('body', 'touchend', ($event) => {
-        this.resetOrSelect($event);
+        this.resetOrAccept($event);
       }),
       this.renderer.listen('body', 'touchmove', ($event) => {
         this.moveSlider($event);
@@ -45,39 +58,38 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     this.listeners.forEach(listenerFunc => listenerFunc());
   }
 
-  public initSlider(event) {
-    this.isMouseDown = true;
+  public initSliderPosition(event) {
+    if (this.isDisabled) { return; }
+    this.isActive = true;
     this.totalSlideDistance = this.hostEl.clientWidth - this.hostEl.children['slider'].clientWidth;
-    this.startPosition = event.clientX || event.touches[0].pageX;
-    this.resetText = false;
-    this.resetSlider = false;
+    this.startPosition = event.touches[0].pageX;
+    this.reset = false;
     if (this.totalSlideDistance > 0) {
-       this.textOpacity = 1;
-       this.sliderLeftPos = this.defSliderLeftPos;
+      this.textOpacity = 1;
+      this.sliderLeftPos = this.defSliderLeftPos;
     }
   }
 
-  private resetOrSelect(event) {
-    if (!this.isMouseDown) { return; }
-    this.isMouseDown = false;
-    const currentPosition = event.clientX || event.changedTouches[0].pageX;
+  private resetOrAccept(event) {
+    if (!this.isActive) { return; }
+    this.isActive = false;
+    const currentPosition = event.changedTouches[0].pageX;
     const relativePosition = currentPosition - this.startPosition;
 
-    if (relativePosition - this.defSliderLeftPos < this.totalSlideDistance && !this.selected) {
-      this.resetSlider = true;
-      this.resetText = true;
-      return;
+    if (relativePosition - this.defSliderLeftPos < this.totalSlideDistance && !this.isAccepted) {
+      this.reset = true;
+       return;
     }
 
     if (this.totalSlideDistance > 0) {
-      this.selected = true;
+      this.isAccepted = true;
       this.click.emit();
     }
   }
 
   private moveSlider(event) {
-    if (!this.isMouseDown) { return; }
-    const currentPosition = event.clientX || event.changedTouches[0].pageX;
+    if (!this.isActive) { return; }
+    const currentPosition = event.changedTouches[0].pageX;
     const relativePosition = currentPosition - this.startPosition;
     this.textOpacity = 1 - (relativePosition / this.totalSlideDistance);
 
@@ -93,4 +105,5 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
 
     this.sliderLeftPos = relativePosition;
   }
+
 }

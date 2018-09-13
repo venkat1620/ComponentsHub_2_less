@@ -24,6 +24,7 @@ export class AppComponent {
     left: boolean;
     right: boolean;
 
+    isDisabled = false;
     public textItems: TextItem[] = [ new TextItem(1),
                                      new TextItem(2),
                                      new TextItem(3),

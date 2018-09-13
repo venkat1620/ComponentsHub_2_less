@@ -1,0 +1,77 @@
+@flex: {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+};
+
+@font-face {
+    font-family: open-sans-bold-condensed;
+    src: url('../../style/fonts/Open-Sans-Bold-Condensed.ttf');
+}
+
+@restrictSelection: {
+    user-select: none;
+    cursor: default;
+};
+
+:host,swipe-button-tech {
+    position: relative;
+    background-color: #0D6AA8;
+    width: 250px;
+    height: 56px;
+    border-radius: 3px;
+    @flex();
+    &.accepted{
+        background-color: #78D132;
+        transition: background-color 0.3s;
+        vertical-align: top;
+    }
+    &.active {
+        background-color: #197CB6;
+        transition: background-color 0.3s;
+    }
+    &.disabled{
+        opacity: 0.4;
+    }
+    .button-txt {
+        color: #FFFFFF;;
+        font-size: 18px;
+        font-family: open-sans-bold-condensed;
+        text-transform: capitalize;
+        opacity: 1;
+        @restrictSelection();
+        .resetText {
+            opacity: 1 !important;
+            transition: opacity 0.8s;
+        }
+        .accepted{
+            @flex();
+            .icon-bg {
+                @flex();
+                width: 40px;
+                height: 40px;
+                background-color: #4FA516;
+                margin-right: 10px;
+                border-radius: 50%; 
+            }
+        }
+    }
+    .button-slider {
+        position: absolute;
+        left: 7px;
+        background-color: #2C8CCB;
+        width: 20%;
+        height: 80%;
+        border-radius: 3px;
+        @flex();
+        &.resetSlider {
+            left: 7px !important;
+            transition: left 0.5s;
+        }
+    }
+    .icon{
+        color: #FFFFFF;
+        font-size: 32px;
+        @restrictSelection();
+    }
+}

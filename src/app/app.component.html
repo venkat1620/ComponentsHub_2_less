@@ -7,7 +7,8 @@
   <div class='swipe-Container'>
     <text-item-ribbon [textItems]='textItems'></text-item-ribbon><div class='dummy'></div>
   </div>
-  <swipe-button-org></swipe-button-org>
+  <swipe-button-tech [isDisabled]="isDisabled"></swipe-button-tech>
+  <input type="button" class='btn' value='toggle' (click)="isDisabled=!isDisabled" style="margin-left:20px;">
 </div>
 <!--<div class='swipe-Container'>
     <input type="button" class='btn' value='increment' (click)='clicked()'>

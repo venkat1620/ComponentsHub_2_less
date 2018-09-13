@@ -1,0 +1,12 @@
+<div class="button-txt">
+  <div *ngIf="!isAccepted" [ngClass]="{'resetText': reset}" [ngStyle]="{'opacity': textOpacity}" [innerText]="btnText"></div>
+  <div *ngIf="isAccepted" class="accepted">
+    <span class="icon-bg">
+      <i class='icon icon-accept'></i>
+    </span>
+    <span [innerText]="accptedText"></span>
+  </div>
+</div>
+<div class="button-slider" id='slider' [ngClass]="{'resetSlider': reset,'accepted': isAccepted}" [ngStyle]="{'left.px': sliderLeftPos}" *ngIf="!isAccepted" (touchstart)="initSliderPosition($event)">
+  <i class="icon icon-arrow-right"></i>
+</div>

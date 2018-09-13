@@ -10,6 +10,7 @@ import { SwipeButtonModule } from './swipe-button-final/swipe-button.module';
 import { HammerDemoModule } from './hammer-demo/hammer-demo.module';
 import { TextItemRibbonModule } from './text-item-ribbon/text-item-ribbon.module';
 import { SwipeButtonModuleOrg } from './swipe-button/swipe-button.module';
+import { SwipeButtonTechModule } from './swipe-button-techUI/swipe-button.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SwipeButtonModuleOrg } from './swipe-button/swipe-button.module';
     AutosStateIndicatorModule,
     SwipeButtonModuleOrg,
     SwipeButtonModule,
+    SwipeButtonTechModule,
     HammerDemoModule,
     TextItemRibbonModule
   ],
