@@ -28,7 +28,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
   public isDisabled = false;
 
   @Output()
-  public click: EventEmitter<any> = new EventEmitter();
+  public clicked: EventEmitter<any> = new EventEmitter();
 
   @HostBinding('class.accepted') public isAccepted: boolean;
 
@@ -83,7 +83,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
 
     if (this.totalSlideDistance > 0) {
       this.isAccepted = true;
-      this.click.emit();
+      this.clicked.emit();
     }
   }
 
