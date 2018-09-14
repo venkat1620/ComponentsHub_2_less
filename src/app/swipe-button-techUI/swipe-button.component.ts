@@ -12,11 +12,11 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
   private totalSlideDistance = 0;
   private hostEl;
   private listeners: Function[] = [];
-  private defSliderLeftPos = 7;
+  private defSliderPosition = 7;
 
   public reset: boolean;
   public textOpacity: number;
-  public sliderLeftPos: number;
+  public sliderPosition: number;
 
   @Input()
   public btnText = 'swipe to accept';
@@ -54,7 +54,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnDestroy(): void {
+  public ngOnDestroy() {
     this.listeners.forEach(listenerFunc => listenerFunc());
   }
 
@@ -66,7 +66,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     this.reset = false;
     if (this.totalSlideDistance > 0) {
       this.textOpacity = 1;
-      this.sliderLeftPos = this.defSliderLeftPos;
+      this.sliderPosition = this.defSliderPosition;
     }
   }
 
@@ -76,7 +76,7 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     const currentPosition = event.changedTouches[0].pageX;
     const relativePosition = currentPosition - this.startPosition;
 
-    if (relativePosition - this.defSliderLeftPos < this.totalSlideDistance && !this.isAccepted) {
+    if (relativePosition - this.defSliderPosition < this.totalSlideDistance && !this.isAccepted) {
       this.reset = true;
        return;
     }
@@ -94,16 +94,16 @@ export class SwipeButtonComponent implements OnInit, OnDestroy {
     this.textOpacity = 1 - (relativePosition / this.totalSlideDistance);
 
     if (relativePosition <= 0) {
-      this.sliderLeftPos = this.defSliderLeftPos;
+      this.sliderPosition = this.defSliderPosition;
       return;
     }
 
     if (relativePosition >= this.totalSlideDistance) {
-      this.sliderLeftPos = this.totalSlideDistance;
+      this.sliderPosition = this.totalSlideDistance;
       return;
     }
 
-    this.sliderLeftPos = relativePosition;
+    this.sliderPosition = relativePosition;
   }
 
 }

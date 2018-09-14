@@ -7,6 +7,6 @@
     <span [innerText]="accptedText"></span>
   </div>
 </div>
-<div class="button-slider" id='slider' [ngClass]="{'resetSlider': reset,'accepted': isAccepted}" [ngStyle]="{'left.px': sliderLeftPos}" *ngIf="!isAccepted" (touchstart)="initSliderPosition($event)">
+<div class="button-slider" id='slider' [ngClass]="{'resetSlider': reset,'accepted': isAccepted}" [ngStyle]="{'left.px': sliderPosition}" *ngIf="!isAccepted" (touchstart)="initSliderPosition($event)">
   <i class="icon icon-arrow-right"></i>
 </div>
