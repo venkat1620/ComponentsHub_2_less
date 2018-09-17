@@ -3,24 +3,22 @@
     width: 100%;
     overflow: hidden;
     background: #414141;
-    border-left: 10px solid #6E6E6E;
-    border-right: 10px solid #6E6E6E;
+    padding: 0 10px;
+    position: relative;
     .text-items-slider {
-        height: 88%;
+        height: 90%;
         display: flex;
         &.sliding {
             transition: transform 500ms linear;
         }
         .text-items {
-            height: 100%;
-            color: #fff;
             &::after {
                 content: '';
                 height: 40%;
                 float: right;
                 border-left: 3px solid #6E6E6E;
                 position: relative;
-                top: 20%;
+                top: 30%;
                 right: 4px;
             }
         }
@@ -29,7 +27,6 @@
         list-style-type: none;
         display: inline-flex;
         vertical-align: top;
-        height: 12%;
         li {
             height: 6px;
             width: 6px;
@@ -41,4 +38,38 @@
             }
         }
     }
+    .arrow {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        display: flex;
+        align-items: center;
+        background-color: #6E6E6E;
+        &.arrow-left {
+            left: 0px;
+            justify-content: flex-end;
+            &::after{
+                @arrow();
+                border-right: 6px solid #fff;
+            }
+        }
+        &.arrow-right {
+            right: 0px;
+            justify-content: flex-start;
+            &::after{
+                @arrow();
+                border-left: 6px solid #fff;
+                
+            }
+        }
+    }
+    @arrow: {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        opacity: 0.6;
+    };
 }

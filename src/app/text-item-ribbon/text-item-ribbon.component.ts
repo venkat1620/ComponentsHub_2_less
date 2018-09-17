@@ -11,18 +11,16 @@ export class TextItemRibbonComponent implements OnInit {
   public isSliding = false;
   public sliderPosition = 0;
 
-  @Input()
-  public textItems: TextItem[];
-
   private sliderPrevPosition = 0;
   private sliderInitialPosition = 0;
   private maxSwipeVelocity = 1;
   private maxPanThreshold = 8;
   private textItemsCapacity = textItemsCapacity.get(window.innerWidth);
 
-  constructor(private hostRef: ElementRef) {
+  @Input()
+  public textItems: TextItem[];
 
-  }
+  constructor(private hostRef: ElementRef) {  }
 
   @HostListener('pan', ['$event']) public onPan(event) {
      this.slideTextItems(event);
@@ -33,7 +31,9 @@ export class TextItemRibbonComponent implements OnInit {
   }
 
   public get textItemsWidth() {
-    return this.hostRef.nativeElement.clientWidth / this.textItemsCapacity;
+    const style = getComputedStyle(this.hostRef.nativeElement);
+    return (parseFloat(style.width) - (parseFloat(style.paddingLeft) +
+              parseFloat(style.paddingLeft))) / this.textItemsCapacity;
   }
 
   public get sliderWidth() {
